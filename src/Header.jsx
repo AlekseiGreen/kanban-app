@@ -3,8 +3,8 @@ import "./Header.css"
 
 function Header(){
     return(
-        <div className="header">
-            123
+        <div className="grid-header header">
+            1234
         </div>
     );
 }

@@ -25,17 +25,10 @@ body{
             "main"
             "footer";
     }
-
-    .grid-left-header{
-        grid-area: left_header;
-    }
-
-    .grid-right-header{
-        grid-area: right_header;
-    }
     
     .grid-header{
         position: sticky;
+        /* position: fixed; */
         top: 0;
         z-index: 9;
         grid-area: header;
