@@ -4,7 +4,7 @@ import "./Footer.css"
 function Footer(){
     return(
         <div className="grid-footer footer">
-            Footer new
+            Footer new 
         </div>
     );
 }
