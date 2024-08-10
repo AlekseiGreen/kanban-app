@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* PC work=1280px test=600px*/
+@media only screen and (min-width: 600px){
+    .block{
+        position: relative;
+        margin: 20px 3px 32px 3px;
+        width: 282px;
+        min-height: 197px;
+        border-radius: 10px;
+        background: rgb(235, 236, 240);
+
+        color: rgb(0, 0, 0);
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    .block-title{
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        width: 232px;
+    }
+
+    .block-content{
+        position: absolute;
+        left: 12px;
+        top: 44px;
+        width: 258px;
+        margin-bottom: 15px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+        border-radius: 5px;
+        background: rgb(255, 255, 255);
+    }
+
+    .block-add{
+        position: absolute;
+        width: 102px;
+        height: 29px;
+        left: 12px;
+        bottom: 8px;
+        cursor: pointer;
+
+        color: rgb(94, 108, 132);
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+    .block-add:hover{
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .block-add-text{
+        position: relative;
+        text-align: center;
+        top: 5px;
+    }
+}
