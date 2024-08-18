@@ -51,14 +51,16 @@ function Main(){
     }, []);
 
     return(
-        <div className="grid-main main">
-            <Avatar
-                size={data[currentAvatar].size}
-                person={data[currentAvatar].person}
-                onClick={testClickAvatar}
-            />
-            <button onClick={onClickPrev}>Prev</button>
-            <button onClick={onClickNext}>Next</button>
+        <div className="grid-main">
+            <div  className="main">
+                <Avatar
+                    size={data[currentAvatar].size}
+                    person={data[currentAvatar].person}
+                    onClick={testClickAvatar}
+                />
+                <button onClick={onClickPrev}>Prev</button>
+                <button onClick={onClickNext}>Next</button>
+            </div>
         </div>
     );
 }

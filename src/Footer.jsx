@@ -3,8 +3,11 @@ import "./Footer.css"
 
 function Footer(){
     return(
-        <div className="grid-footer footer">
-            Footer new 
+        <div className="grid-footer">
+            <div className="footer">
+                Footer new
+            </div>
+            
         </div>
     );
 }
