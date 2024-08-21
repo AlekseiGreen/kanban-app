@@ -131,12 +131,14 @@ body{
         position: absolute;
         left: 7px;
         top: 8px;
+        cursor: pointer;
     }
 
     .header__arrow-down-log{
         position: absolute;
         left: 7px;
         top: 33px;
+        cursor: pointer;
     }
 
 
