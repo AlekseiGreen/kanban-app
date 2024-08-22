@@ -6,9 +6,20 @@ import Block from "./Block.jsx";
 function Main(){
     localStorage.setItem('titleBox', "Title");
     localStorage.setItem('contentBox', "Content");
-    console.log(localStorage);
-    const titleBox= "Title2";
-    const contentBox= "Content2";
+
+    const dataMock = [
+        {
+             title: 'backlog',
+             issues: [
+                 {
+                     id: '12345',
+                     name: 'Sprint bugfix',
+             description: 'Fix all the bugs'
+                 }
+             ]
+        },
+        // и так далее
+    ]
 
     function ConsLog(value){
         console.log("callBackFunction=", value);
@@ -17,11 +28,13 @@ function Main(){
     return(
         <div className="grid-main">
             <div  className="main">
-                <Block title={
-                    localStorage.getItem('titleBox')}
-                    content={localStorage.getItem('contentBox')}
-                    onFunction={ConsLog}
-                />
+                {dataMock.map(i=>
+                    <Block
+                        object={i}
+                        onFunction={ConsLog}
+                    />
+                )}
+                
 
             </div>
         </div>
