@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import "./Main.css";
 import Block from "./Block.jsx";
-import Avatar from "./Avatar.jsx";
 
 
 function Main(){
@@ -11,10 +10,18 @@ function Main(){
     const titleBox= "Title2";
     const contentBox= "Content2";
 
+    function ConsLog(value){
+        console.log("callBackFunction=", value);
+    }
+
     return(
         <div className="grid-main">
             <div  className="main">
-                <Block prTitle={localStorage.getItem('titleBox')} prCont={localStorage.getItem('contentBox')}/>
+                <Block title={
+                    localStorage.getItem('titleBox')}
+                    content={localStorage.getItem('contentBox')}
+                    onFunction={ConsLog}
+                />
 
             </div>
         </div>
