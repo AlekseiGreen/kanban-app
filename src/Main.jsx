@@ -4,6 +4,10 @@ import Block from "./Block.jsx";
 
 
 function Main(){
+    let s = 'name';
+    let name = 'bar';
+    console.log(eval(s));
+
     localStorage.setItem('titleBox', "Title");
     localStorage.setItem('contentBox', "Content");
 
@@ -12,13 +16,24 @@ function Main(){
              title: 'backlog',
              issues: [
                  {
-                     id: '12345',
+                     id: '1',
                      name: 'Sprint bugfix',
              description: 'Fix all the bugs'
                  }
-             ]
+            ],
+            function: 'ConsLog'
         },
-        // и так далее
+        {
+            title: 'log',
+            issues: [
+                {
+                    id: '2',
+                    name: 'dfsf dfd',
+            description: 'Fix all the bugs'
+                }
+            ],
+            function: 'ConsLog'
+       },
     ]
 
     function ConsLog(value){
