@@ -11,13 +11,18 @@ function Main(){
     // массив
     const dataMock = [
         {
-             title: 'backlog',
+             title: 'Backlog',
              issues: [
                  {
                      id: '1',
                      name: 'Sprint bugfix',
              description: 'Fix all the bugs 1'
-                 }
+                 },
+                 {
+                    id: '11',
+                    name: 'Sprint bugfix 11',
+            description: 'Fix all the bugs 11'
+                },
             ],
             onFunction: onCount1
         },
@@ -57,11 +62,11 @@ function Main(){
     ]
 
     // функция 1
-    const [count1, setCount1] = useState(0); 
-    function onCount1(){ 
+    const [count1, setCount1] = useState(0);
+    function onCount1(){
         setCount1(count1 + 1);
         console.log('COUNT1=', count1);
-    } 
+    }
 
     // функция 2
     const [count2, setCount2] = useState(0);
@@ -73,7 +78,7 @@ function Main(){
     return(
         <div className="grid-main">
             <div  className="main">
-                {/* Вывод все блоков в цикле */}
+                {/* Вывод всех блоков в цикле */}
                 {dataMock.map(i=>
                     {
                         let onFnc = i.onFunction;
