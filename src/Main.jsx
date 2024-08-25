@@ -4,13 +4,11 @@ import Block from "./Block.jsx";
 
 
 function Main(){
-    let s = 'name';
-    let name = 'bar';
-    console.log(eval(s));
 
     localStorage.setItem('titleBox', "Title");
     localStorage.setItem('contentBox', "Content");
 
+    // массив
     const dataMock = [
         {
              title: 'backlog',
@@ -18,39 +16,75 @@ function Main(){
                  {
                      id: '1',
                      name: 'Sprint bugfix',
-             description: 'Fix all the bugs'
+             description: 'Fix all the bugs 1'
                  }
             ],
-            function: 'ConsLog'
+            onFunction: onCount1
         },
         {
-            title: 'log',
+            title: 'Ready',
             issues: [
                 {
                     id: '2',
-                    name: 'dfsf dfd',
-            description: 'Fix all the bugs'
+                    name: '222 222',
+            description: 'Fix all the bugs 3'
                 }
             ],
-            function: 'ConsLog'
-       },
+            onFunction: onCount2
+        },
+        {
+            title: 'In progress',
+            issues: [
+                {
+                    id: '3',
+                    name: '333 33',
+            description: 'Fix all the bugs 3'
+                }
+            ],
+            onFunction: onCount1
+        },
+        {
+            title: 'Finished',
+            issues: [
+                {
+                    id: '4',
+                    name: '444 444',
+            description: 'Fix all the bugs 4'
+                }
+            ],
+            onFunction: onCount2
+        },
     ]
 
-    function ConsLog(value){
-        console.log("callBackFunction=", value);
+    // функция 1
+    const [count1, setCount1] = useState(0); 
+    function onCount1(){ 
+        setCount1(count1 + 1);
+        console.log('COUNT1=', count1);
+    } 
+
+    // функция 2
+    const [count2, setCount2] = useState(0);
+    function onCount2(){
+        setCount2(count2 + 1);
+        console.log('COUNT2=', count2);
     }
 
     return(
         <div className="grid-main">
             <div  className="main">
+                {/* Вывод все блоков в цикле */}
                 {dataMock.map(i=>
-                    <Block
-                        object={i}
-                        onFunction={ConsLog}
-                    />
-                )}
-                
+                    {
+                        let onFnc = i.onFunction;
 
+                        return(
+                            <Block
+                                array={i}
+                                onFunction={onFnc}
+                            />)
+                    }
+                )}
             </div>
         </div>
     );
