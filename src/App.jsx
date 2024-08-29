@@ -5,8 +5,6 @@ import Footer from "./Footer.jsx";
 
 
 function App(){
-    // localStorage.setItem('tt', 2);
-    // console.log(localStorage);
 
     return(
         <div className="grid-container">

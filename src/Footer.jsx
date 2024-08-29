@@ -7,7 +7,6 @@ function Footer(){
             <div className="footer">
                 Footer new
             </div>
-            
         </div>
     );
 }

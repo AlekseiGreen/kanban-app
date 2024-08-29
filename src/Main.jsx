@@ -5,9 +5,6 @@ import Block from "./Block.jsx";
 
 function Main(){
 
-    localStorage.setItem('titleBox', "Title");
-    localStorage.setItem('contentBox', "Content");
-
     // массив
     const dataMock = [
         {
@@ -24,7 +21,8 @@ function Main(){
             description: 'Fix all the bugs 11'
                 },
             ],
-            onFunction: onCount1
+            onFunction: onArray,
+            onFunction_2: onEnter
         },
         {
             title: 'Ready',
@@ -32,7 +30,7 @@ function Main(){
                 {
                     id: '2',
                     name: '222 222',
-            description: 'Fix all the bugs 3'
+                    description: 'Fix all the bugs 3'
                 }
             ],
             onFunction: onCount2
@@ -43,7 +41,7 @@ function Main(){
                 {
                     id: '3',
                     name: '333 33',
-            description: 'Fix all the bugs 3'
+                    description: 'Fix all the bugs 3'
                 }
             ],
             onFunction: onCount1
@@ -54,12 +52,32 @@ function Main(){
                 {
                     id: '4',
                     name: '444 444',
-            description: 'Fix all the bugs 4'
+                    description: 'Fix all the bugs 4'
                 }
             ],
-            onFunction: onCount2
+            onFunction: onCount2,
         },
     ]
+
+    const newPosts = dataMock.map((element) => (
+        element.title === 'Backlog'
+          ? { ...element, title_2: 'other' }
+          : element
+      ));
+
+    // func
+    function onEnter(in_){
+        console.log("APP=", in_);
+    }
+
+    // функция []
+    const [array, setArray] = useState([1,2,3]);
+    function onArray(in_){
+        console.log('Array=', array);
+        let rrr = 5+6;
+        setArray(rrr);
+        console.log('Array=', array);
+    }
 
     // функция 1
     const [count1, setCount1] = useState(0);
@@ -79,14 +97,16 @@ function Main(){
         <div className="grid-main">
             <div  className="main">
                 {/* Вывод всех блоков в цикле */}
-                {dataMock.map(i=>
+                {dataMock.map(element=>
                     {
-                        let onFnc = i.onFunction;
+                        let onFnc = element.onFunction;
+                        let onEnt = element.onFunction_2;
 
                         return(
                             <Block
-                                array={i}
+                                array={element}
                                 onFunction={onFnc}
+                                onEnter={onEnt}
                             />)
                     }
                 )}
