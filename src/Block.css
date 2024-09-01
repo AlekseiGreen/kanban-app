@@ -74,4 +74,22 @@
         text-align: center;
         top: 5px;
     }
+
+    .block-submit{
+        margin-top: 17px;
+        width: 102px;
+        height: 29px;
+        margin-left: 12px;
+        margin-top: auto;
+        margin-bottom: 8px;
+        cursor: pointer;
+
+        color: rgb(94, 108, 132);
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
 }

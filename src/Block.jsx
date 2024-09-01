@@ -1,26 +1,33 @@
-import {useRef} from 'react';
+import {useState, useRef} from 'react';
 import "./Block.css";
 
-let textData;
-
+// let dataRef;
 
 function Block(props){
-    const fileInputRef = useRef();
-    console.log(fileInputRef);
+    const fileInputRef = useRef(null);
+
+    console.log("fileRef", fileInputRef);
+
+
+    const [visualInput, setVisualInput] = useState(false);
+
+    function onVisionInput(){
+        setVisualInput(!visualInput);
+    }
     
     const handleEnter = (event)=>{
         console.log("BLOCK=",event.target.value);
-        textData = event.target.value;
     }
 
-    function onSendData(in_textData){
-        console.log("Ref=", fileInputRef.current.value);
-        if(in_textData === undefined || in_textData === ""){
+    function onSendData(in_dataRef){
+        console.log("Ref=", in_dataRef);
+        if(in_dataRef.current.value === undefined || in_dataRef.current.value  === "" || in_dataRef.current.value  === null ){
             console.log("нет данных");
         } else{
-            console.log("Send data=", in_textData);
-            props.onEnter(in_textData);
-            fileInputRef.current.value ="";
+            console.log("Send data=", in_dataRef.current.value);
+            props.onEnter(in_dataRef.current.value);
+            fileInputRef.current.value = null;
+            setVisualInput(!visualInput);
         }
     }
 
@@ -28,8 +35,9 @@ function Block(props){
         <div className="block">
             <div className="block-title">{props.array.title}</div>
             {props.array.issues.map(element=> <div className="block-content">{element.name}</div>)}
-            {true && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
-            <div className="block-add"><div className="block-add-text" onClick={()=>onSendData(textData)}>+ Add card</div></div>
+            {visualInput && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
+            {!visualInput &&  <div className="block-add"><div className="block-add-text" onClick={onVisionInput}>+ Add card</div></div>}
+            {visualInput && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendData(fileInputRef)}>Submit</div></div>}
         </div>
     );
 }
