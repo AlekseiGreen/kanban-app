@@ -59,15 +59,34 @@ function Main(){
         },
     ]
 
-    const newPosts = dataMock.map((element) => (
-        element.title === 'Backlog'
-          ? { ...element, title_2: 'other' }
-          : element
-      ));
+    let newPosts = [];
+    let newSub = [];
+
+    // Добавление задания в Backlog
+    function addDataBlocklog(key, value){
+        newPosts = dataMock.map(function(element)
+            {
+                if(element.title === 'Backlog'){
+                    element = {...element, issues: [...element.issues,
+                        {
+                            id: '',
+                            [key]: value,
+                            description: 'Overwiye'
+                        }]};
+                }
+                return(element);
+
+            }
+        );
+        return(newPosts);
+    }
 
     // func
     function onEnter(in_){
         console.log("APP=", in_);
+        console.log(dataMock);
+        addDataBlocklog('superKey', in_);
+        console.log('NewPost', newPosts);
     }
 
     // функция []

@@ -92,4 +92,10 @@
         letter-spacing: 0%;
         text-align: left;
     }
+
+    .block-submit-text{
+        position: relative;
+        text-align: center;
+        top: 5px;
+    }
 }
