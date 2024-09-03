@@ -62,23 +62,23 @@ function Main(){
     let newPosts = [];
     let newSub = [];
 
+
+    const [main, setMain] = useState([]);
     // Добавление задания в Backlog
     function addDataBlocklog(key, value){
-        newPosts = dataMock.map(function(element)
-            {
-                if(element.title === 'Backlog'){
-                    element = {...element, issues: [...element.issues,
-                        {
-                            id: '',
-                            [key]: value,
-                            description: 'Overwiye'
-                        }]};
-                }
-                return(element);
+        // newPosts = dataMock.map(function(element)
+        //     {
+        //         if(element.title === 'Backlog'){
+        //             element = {...element, issues: [...element.issues, {id: '',[key]: value,} ] };
+        //         }
+        //         return(element);
 
-            }
-        );
-        return(newPosts);
+        //     }
+        // );
+        
+        setMain(main => [...main, 'A']);
+
+        console.log("MAIN=", main);
     }
 
     // func
@@ -86,7 +86,7 @@ function Main(){
         console.log("APP=", in_);
         console.log(dataMock);
         addDataBlocklog('superKey', in_);
-        console.log('NewPost', newPosts);
+        console.log('New Main', main);
     }
 
     // функция []
