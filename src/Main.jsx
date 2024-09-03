@@ -63,7 +63,7 @@ function Main(){
     let newSub = [];
 
 
-    const [main, setMain] = useState([]);
+    const [main, setMain] = useState(dataMock);
     // Добавление задания в Backlog
     function addDataBlocklog(key, value){
         // newPosts = dataMock.map(function(element)
