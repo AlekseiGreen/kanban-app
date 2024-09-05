@@ -75,10 +75,15 @@ function Main(){
 
         //     }
         // );
-        
-        setMain(main => [...main, 'A']);
+        let copy = Object.assign([], main);
+        let copy_2 = Object.assign([], copy[0].issues);
+        copy_2.push({key:"KEY"});
+        copy[0].issues = copy_2;
 
-        console.log("MAIN=", main);
+        setMain(copy);
+
+        // console.log("Vlaue_1=", value_1);
+        console.log("Copy=", copy);
     }
 
     // func
