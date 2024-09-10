@@ -48,11 +48,10 @@
     }
 
     .block-add{
-        margin-top: 17px;
         width: 102px;
         height: 29px;
         margin-left: 12px;
-        margin-top: auto;
+        margin-top: 17px;
         margin-bottom: 8px;
         cursor: pointer;
 
@@ -76,7 +75,6 @@
     }
 
     .block-submit{
-        margin-top: 17px;
         width: 102px;
         height: 29px;
         margin-left: 12px;

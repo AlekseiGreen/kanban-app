@@ -21,8 +21,7 @@ function Main(){
             description: 'Fix all the bugs 11'
                 },
             ],
-            onFunction: onArray,
-            onFunction_2: onEnter
+            onFunction: onWriteBacklog,
         },
         {
             title: 'Ready',
@@ -33,7 +32,7 @@ function Main(){
                     description: 'Fix all the bugs 3'
                 }
             ],
-            onFunction: onCount2
+            onFunction: onWriteReady,
         },
         {
             title: 'In progress',
@@ -44,7 +43,7 @@ function Main(){
                     description: 'Fix all the bugs 3'
                 }
             ],
-            onFunction: onCount1
+            onFunction: onWriteInProgress,
         },
         {
             title: 'Finished',
@@ -55,64 +54,46 @@ function Main(){
                     description: 'Fix all the bugs 4'
                 }
             ],
-            onFunction: onCount2,
+            onFunction: onWriteFinished,
         },
     ]
-
-    let newPosts = [];
-    let newSub = [];
 
 
     const [main, setMain] = useState(dataMock);
     // Добавление задания в Backlog
     function addDataBlocklog(key, value){
-        // newPosts = dataMock.map(function(element)
-        //     {
-        //         if(element.title === 'Backlog'){
-        //             element = {...element, issues: [...element.issues, {id: '',[key]: value,} ] };
-        //         }
-        //         return(element);
+        let copyMain = Object.assign([], main);
+        let copyMainIssues = Object.assign([], copyMain[0].issues);
+        copyMainIssues.push({id: '',name: value, description: ''});
+        copyMain[0].issues = copyMainIssues;
 
-        //     }
-        // );
-        let copy = Object.assign([], main);
-        let copy_2 = Object.assign([], copy[0].issues);
-        copy_2.push({key:"KEY"});
-        copy[0].issues = copy_2;
-
-        setMain(copy);
-
-        // console.log("Vlaue_1=", value_1);
-        console.log("Copy=", copy);
+        setMain(copyMain);
+        console.log("Copy=", copyMain);
     }
 
-    // func
-    function onEnter(in_){
+    // func onWriteBacklog
+    function onWriteBacklog(in_){
         console.log("APP=", in_);
         console.log(dataMock);
         addDataBlocklog('superKey', in_);
         console.log('New Main', main);
     }
 
-    // функция []
-    const [array, setArray] = useState([1,2,3]);
-    function onArray(in_){
-        console.log('Array=', array);
-        let rrr = 5+6;
-        setArray(rrr);
+    // func onWriteReady
+    const [array, setArray] = useState("onWriteReady");
+    function onWriteReady(in_){
         console.log('Array=', array);
     }
 
-    // функция 1
-    const [count1, setCount1] = useState(0);
-    function onCount1(){
-        setCount1(count1 + 1);
+    // onWriteReady onWriteInProgress
+    const [count1, setCount1] = useState('onWriteInProgress');
+    function onWriteInProgress(){
         console.log('COUNT1=', count1);
     }
 
-    // функция 2
-    const [count2, setCount2] = useState(0);
-    function onCount2(){
+    // onWriteInProgress onWriteFinished
+    const [count2, setCount2] = useState('onWriteFinished');
+    function onWriteFinished(){
         setCount2(count2 + 1);
         console.log('COUNT2=', count2);
     }
@@ -121,16 +102,14 @@ function Main(){
         <div className="grid-main">
             <div  className="main">
                 {/* Вывод всех блоков в цикле */}
-                {dataMock.map(element=>
+                {main.map((element)=>
                     {
-                        let onFnc = element.onFunction;
-                        let onEnt = element.onFunction_2;
+                        let onFunc = element.onFunction;
 
                         return(
                             <Block
                                 array={element}
-                                onFunction={onFnc}
-                                onEnter={onEnt}
+                                onWrite={onFunc}
                             />)
                     }
                 )}

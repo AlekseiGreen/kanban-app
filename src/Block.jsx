@@ -1,7 +1,10 @@
 import {useState, useRef} from 'react';
+import Select from 'react-select';
+
 import "./Block.css";
 
 // let dataRef;
+
 
 function Block(props){
     const fileInputRef = useRef(null);
@@ -19,12 +22,21 @@ function Block(props){
     function onSendData(in_dataRef){
         if(in_dataRef.current.value === undefined || in_dataRef.current.value  === "" || in_dataRef.current.value  === null ){
             console.log("нет данных");
+            setVisual(!visual);
         } else{
-            props.onEnter(in_dataRef.current.value);
+            props.onWrite(in_dataRef.current.value);
             fileInputRef.current.value = null;
             setVisual(!visual);
         }
     }
+
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+    ]
+
+
 
     return(
         <div className="block">
@@ -33,6 +45,7 @@ function Block(props){
             {visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
             {!visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
             {visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendData(fileInputRef)}>Submit</div></div>}
+            <Select options={options} onChange={(e)=>console.log(e.label)}/>
         </div>
     );
 }
