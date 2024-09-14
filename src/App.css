@@ -7,9 +7,9 @@
 
 /* ширина PC 1280px и ширина Mobile 320px */
 
-*{
+/* *{
   outline: 2px solid green !important;  
-}
+} */
 
 html {
     scrollbar-color: rgb(115, 144, 160) rgb(72, 131, 166);

@@ -10,9 +10,18 @@ function Block(props){
     const fileInputRef = useRef(null);
 
     const [visual, setVisual] = useState(false);
+    const [selectValue, setSelectValue] = useState('');
+    let visualInput = false;
 
     function onVision(){
         setVisual(!visual);
+    }
+
+
+    if(props.array.title === 'Backlog'){
+        visualInput = false;
+    } else{
+        visualInput = true;
     }
     
     const handleEnter = (event)=>{
@@ -31,9 +40,16 @@ function Block(props){
     }
 
     const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
+        {
+            id: '1',
+            label: 'Sprint bugfix',
+            description: 'Fix all the bugs 1'
+        },
+        {
+            id: '11',
+            label: 'Sprint bugfix 11',
+            description: 'Fix all the bugs 11'
+       },
     ]
 
 
@@ -41,11 +57,18 @@ function Block(props){
     return(
         <div className="block">
             <div className="block-title">{props.array.title}</div>
-            {props.array.issues.map(element=> <div className="block-content">{element.name}</div>)}
-            {visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
-            {!visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
-            {visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendData(fileInputRef)}>Submit</div></div>}
-            <Select options={options} onChange={(e)=>console.log(e.label)}/>
+            {props.array.issues.map(element=> <div className="block-content">{element.label}</div>)}
+            {!visualInput && visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
+            {!visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
+            {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendData(fileInputRef)}>Submit</div></div>}
+            {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card2</div></div>}
+            {visualInput && visual && <Select
+                classNamePrefix="block-custom-select"
+                onChange={(e)=>console.log(e.label)}
+                // value={selectValue}
+                options={props.partArray}
+            />}
+            {console.log('Issues=', props.partArray)}
         </div>
     );
 }

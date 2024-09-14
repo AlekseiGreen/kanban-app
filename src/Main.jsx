@@ -12,12 +12,12 @@ function Main(){
              issues: [
                  {
                      id: '1',
-                     name: 'Sprint bugfix',
+                     label: '1_1111',
              description: 'Fix all the bugs 1'
                  },
                  {
                     id: '11',
-                    name: 'Sprint bugfix 11',
+                    label: '11_1111',
             description: 'Fix all the bugs 11'
                 },
             ],
@@ -28,7 +28,7 @@ function Main(){
             issues: [
                 {
                     id: '2',
-                    name: '222 222',
+                    label: '2_222',
                     description: 'Fix all the bugs 3'
                 }
             ],
@@ -39,7 +39,7 @@ function Main(){
             issues: [
                 {
                     id: '3',
-                    name: '333 33',
+                    label: '3_3333',
                     description: 'Fix all the bugs 3'
                 }
             ],
@@ -50,7 +50,7 @@ function Main(){
             issues: [
                 {
                     id: '4',
-                    name: '444 444',
+                    label: '4_4444',
                     description: 'Fix all the bugs 4'
                 }
             ],
@@ -64,7 +64,7 @@ function Main(){
     function addDataBlocklog(key, value){
         let copyMain = Object.assign([], main);
         let copyMainIssues = Object.assign([], copyMain[0].issues);
-        copyMainIssues.push({id: '',name: value, description: ''});
+        copyMainIssues.push({id: '', label: value, description: ''});
         copyMain[0].issues = copyMainIssues;
 
         setMain(copyMain);
@@ -102,14 +102,18 @@ function Main(){
         <div className="grid-main">
             <div  className="main">
                 {/* Вывод всех блоков в цикле */}
-                {main.map((element)=>
+                {main.map((element, index)=>
                     {
                         let onFunc = element.onFunction;
+                        if(index>0){
+                            index = index - 1;
+                        }
 
                         return(
                             <Block
                                 array={element}
                                 onWrite={onFunc}
+                                partArray={main[index].issues}
                             />)
                     }
                 )}

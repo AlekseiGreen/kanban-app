@@ -92,8 +92,22 @@
     }
 
     .block-submit-text{
+        width: 50px;
         position: relative;
         text-align: center;
         top: 5px;
+    }
+
+    /* .block-custom-select{
+        margin-left: 12px;
+        margin-top: 15px;
+    } */
+
+    .block-custom-select__control{
+        width: 258px !important;
+
+        margin-left: 12px !important;
+        margin-top: 15px !important;
+        margin-bottom: 12px !important;
     }
 }
