@@ -82,7 +82,7 @@ function Main(){
     // func onWriteReady
     const [array, setArray] = useState("onWriteReady");
     function onWriteReady(in_){
-        console.log('Array=', array);
+        console.log('Ready=', in_);
     }
 
     // onWriteReady onWriteInProgress

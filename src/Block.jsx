@@ -8,6 +8,8 @@ import "./Block.css";
 
 function Block(props){
     const fileInputRef = useRef(null);
+    const fileCHRef = useRef(null);
+
 
     const [visual, setVisual] = useState(false);
     const [selectValue, setSelectValue] = useState('');
@@ -28,7 +30,7 @@ function Block(props){
         console.log("BLOCK=",event.target.value);
     }
 
-    function onSendData(in_dataRef){
+    function onSendBacklog(in_dataRef){
         if(in_dataRef.current.value === undefined || in_dataRef.current.value  === "" || in_dataRef.current.value  === null ){
             console.log("нет данных");
             setVisual(!visual);
@@ -39,19 +41,9 @@ function Block(props){
         }
     }
 
-    const options = [
-        {
-            id: '1',
-            label: 'Sprint bugfix',
-            description: 'Fix all the bugs 1'
-        },
-        {
-            id: '11',
-            label: 'Sprint bugfix 11',
-            description: 'Fix all the bugs 11'
-       },
-    ]
-
+    function onSendReady(in_data){
+        props.onWrite(in_data);
+    }
 
 
     return(
@@ -60,12 +52,11 @@ function Block(props){
             {props.array.issues.map(element=> <div className="block-content">{element.label}</div>)}
             {!visualInput && visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
             {!visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
-            {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendData(fileInputRef)}>Submit</div></div>}
+            {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}
             {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card2</div></div>}
             {visualInput && visual && <Select
                 classNamePrefix="block-custom-select"
-                onChange={(e)=>console.log(e.label)}
-                // value={selectValue}
+                onChange={(e)=>onSendReady(e.label)}
                 options={props.partArray}
             />}
             {console.log('Issues=', props.partArray)}
