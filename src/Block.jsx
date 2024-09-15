@@ -8,11 +8,8 @@ import "./Block.css";
 
 function Block(props){
     const fileInputRef = useRef(null);
-    const fileCHRef = useRef(null);
-
 
     const [visual, setVisual] = useState(false);
-    const [selectValue, setSelectValue] = useState('');
     let visualInput = false;
 
     function onVision(){
@@ -24,6 +21,7 @@ function Block(props){
         visualInput = false;
     } else{
         visualInput = true;
+        
     }
     
     const handleEnter = (event)=>{
@@ -41,13 +39,16 @@ function Block(props){
         }
     }
 
-    function onSendReady(in_data){
-        props.onWrite(in_data);
+    function onSendBlock(in_data, returnIndex){
+        props.onWrite(in_data, returnIndex);
+        setVisual(!visual);
+        
     }
 
 
     return(
         <div className="block">
+            <div>{props.index}</div>
             <div className="block-title">{props.array.title}</div>
             {props.array.issues.map(element=> <div className="block-content">{element.label}</div>)}
             {!visualInput && visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
@@ -56,10 +57,9 @@ function Block(props){
             {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card2</div></div>}
             {visualInput && visual && <Select
                 classNamePrefix="block-custom-select"
-                onChange={(e)=>onSendReady(e.label)}
+                onChange={(e)=>onSendBlock(e.label)}
                 options={props.partArray}
             />}
-            {console.log('Issues=', props.partArray)}
         </div>
     );
 }

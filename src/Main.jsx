@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import "./Main.css";
 import Block from "./Block.jsx";
 
@@ -60,43 +60,53 @@ function Main(){
 
 
     const [main, setMain] = useState(dataMock);
-    // Добавление задания в Backlog
-    function addDataBlocklog(key, value){
+    // Добавление задания в DataBase (Array)
+    function addDataBase(value, index){
         let copyMain = Object.assign([], main);
-        let copyMainIssues = Object.assign([], copyMain[0].issues);
+        let copyMainIssues = Object.assign([], copyMain[index].issues);
         copyMainIssues.push({id: '', label: value, description: ''});
-        copyMain[0].issues = copyMainIssues;
+        copyMain[index].issues = copyMainIssues;
 
         setMain(copyMain);
-        console.log("Copy=", copyMain);
+        // console.log("Copy=", copyMain);
+    }
+
+    // Удаление задания из DataBase (Array)
+    function delDataBase(){
+        let copyMain = Object.assign([], main);
+        // let copyMainIssues = copyMain[0].;
+
     }
 
     // func onWriteBacklog
-    function onWriteBacklog(in_){
-        console.log("APP=", in_);
-        console.log(dataMock);
-        addDataBlocklog('superKey', in_);
+    function onWriteBacklog(in_data){
+        addDataBase(in_data, 0);
         console.log('New Main', main);
     }
 
     // func onWriteReady
-    const [array, setArray] = useState("onWriteReady");
-    function onWriteReady(in_){
-        console.log('Ready=', in_);
+    function onWriteReady(in_data, in_returnIndex){
+        addDataBase(in_data, 1);
+        // console.log('Ready=', in_data);
+        // console.log('ReturnIndex=', in_returnIndex);
     }
 
     // onWriteReady onWriteInProgress
-    const [count1, setCount1] = useState('onWriteInProgress');
-    function onWriteInProgress(){
-        console.log('COUNT1=', count1);
+    function onWriteInProgress(in_, in_returnIndex){
+        addDataBase(in_, 2);
+        console.log('InProgress=', in_);
+        console.log('ReturnIndex=', in_returnIndex);
     }
 
     // onWriteInProgress onWriteFinished
-    const [count2, setCount2] = useState('onWriteFinished');
-    function onWriteFinished(){
-        setCount2(count2 + 1);
-        console.log('COUNT2=', count2);
+    function onWriteFinished(in_, in_returnIndex){
+        addDataBase(in_, 3);
+        console.log('Finished=', in_);
+        console.log('ReturnIndex=', in_returnIndex);
     }
+
+    // Необходимо для сдвига массива (dataMock) влево
+    let indexBack = 0;
 
     return(
         <div className="grid-main">
@@ -104,16 +114,19 @@ function Main(){
                 {/* Вывод всех блоков в цикле */}
                 {main.map((element, index)=>
                     {
+                        
                         let onFunc = element.onFunction;
                         if(index>0){
-                            index = index - 1;
+                            // Сдвиг влево
+                            indexBack = index - 1;
                         }
 
                         return(
                             <Block
                                 array={element}
                                 onWrite={onFunc}
-                                partArray={main[index].issues}
+                                partArray={main[indexBack].issues}
+                                index={index}    
                             />)
                     }
                 )}
