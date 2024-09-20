@@ -1,7 +1,7 @@
 import {useState, useRef} from 'react';
-import Select from 'react-select';
-
+// import Select from 'react-select';
 import "./Block.css";
+import Select from './components/Select';
 
 // let dataRef;
 
@@ -56,8 +56,8 @@ function Block(props){
             {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}
             {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card2</div></div>}
             {visualInput && visual && <Select
-                classNamePrefix="block-custom-select"
-                onChange={(e)=>onSendBlock(e.label)}
+                // classNamePrefix="block-custom-select"
+                onClick={(e)=>onSendBlock(e.label)}
                 options={props.partArray}
             />}
         </div>
