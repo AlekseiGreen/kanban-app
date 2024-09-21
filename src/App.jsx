@@ -1,17 +1,19 @@
 import "./App.css";
-import Header from "./Header.jsx";
-import Main from "./Main.jsx";
-import Footer from "./Footer.jsx";
+import MainPage from "./MainPage.jsx";
+import Detail from "./Detail";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App(){
 
     return(
-        <div className="grid-container">
-            <Header/>
-            <Main/>
-            <Footer/>
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="/detail" element={<Detail/>}/>
+                <Route path="*" element={<h1>Page not found</h1>}/>
+            </Routes>
+        </Router>
     );
 }
 
