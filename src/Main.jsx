@@ -72,9 +72,14 @@ function Main(){
     }
 
     // Удаление задания из DataBase (Array)
-    function delDataBase(){
+    function delDataBase(in_index, in_index_issues){
         let copyMain = Object.assign([], main);
-        // let copyMainIssues = copyMain[0].;
+        let copyMainIssues = Object.assign([], copyMain[in_index].issues);
+
+        copyMainIssues.splice(in_index_issues, 1);
+
+        copyMain[in_index].issues = copyMainIssues;
+        setMain(copyMain);
 
     }
 
@@ -85,24 +90,27 @@ function Main(){
     }
 
     // func onWriteReady
-    function onWriteReady(in_data, in_returnIndex){
+    function onWriteReady(in_data, in_index){
+        // 0 - Blacklog
+        delDataBase(0, in_index);
+        // 1 - Ready
         addDataBase(in_data, 1);
-        // console.log('Ready=', in_data);
-        // console.log('ReturnIndex=', in_returnIndex);
     }
 
     // onWriteReady onWriteInProgress
-    function onWriteInProgress(in_, in_returnIndex){
+    function onWriteInProgress(in_, in_index){
+        // 1 - Ready
+        delDataBase(1, in_index);
+        // 2- InProgress
         addDataBase(in_, 2);
-        console.log('InProgress=', in_);
-        console.log('ReturnIndex=', in_returnIndex);
     }
 
     // onWriteInProgress onWriteFinished
-    function onWriteFinished(in_, in_returnIndex){
+    function onWriteFinished(in_, in_index){
+        // 2 - InProgress
+        delDataBase(2, in_index);
+        // 3 - Finished
         addDataBase(in_, 3);
-        console.log('Finished=', in_);
-        console.log('ReturnIndex=', in_returnIndex);
     }
 
     // Необходимо для сдвига массива (dataMock) влево

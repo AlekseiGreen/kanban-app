@@ -39,16 +39,15 @@ function Block(props){
         }
     }
 
-    function onSendBlock(in_data, returnIndex){
-        props.onWrite(in_data, returnIndex);
+    function onSendBlock(in_data, in_index){
+        props.onWrite(in_data, in_index);
         setVisual(!visual);
-        
+        // console.log("Block=", in_data, "Index=", in_index);
     }
 
 
     return(
         <div className="block">
-            <div>{props.index}</div>
             <div className="block-title">{props.array.title}</div>
             {props.array.issues.map(element=> <div className="block-content">{element.label}</div>)}
             {!visualInput && visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
@@ -56,8 +55,7 @@ function Block(props){
             {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}
             {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card2</div></div>}
             {visualInput && visual && <Select
-                // classNamePrefix="block-custom-select"
-                onClick={(e)=>onSendBlock(e.label)}
+                send={onSendBlock}
                 options={props.partArray}
             />}
         </div>
