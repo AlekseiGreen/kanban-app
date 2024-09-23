@@ -1,18 +1,24 @@
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
-import MainPage from "./MainPage.jsx";
+import Header from "./Header.jsx";
+import Main from "./Main.jsx";
+import Footer from "./Footer.jsx";
 import Detail from "./Detail";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App(){
 
     return(
         <Router>
-            <Routes>
-                <Route path="/" element={<MainPage/>}/>
-                <Route path="/detail" element={<Detail/>}/>
-                <Route path="*" element={<h1>Page not found</h1>}/>
-            </Routes>
+            <Header/>
+            
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/detail" element={<Detail/>}/>
+                    <Route path="*" element={<h1>Page not found</h1>}/>
+                </Routes>
+
+            <Footer/>
         </Router>
     );
 }

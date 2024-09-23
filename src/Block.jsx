@@ -1,9 +1,8 @@
 import {useState, useRef} from 'react';
+import { Link } from 'react-router-dom';
 // import Select from 'react-select';
 import "./Block.css";
 import Select from './components/Select';
-
-// let dataRef;
 
 
 function Block(props){
@@ -42,14 +41,13 @@ function Block(props){
     function onSendBlock(in_data, in_index){
         props.onWrite(in_data, in_index);
         setVisual(!visual);
-        // console.log("Block=", in_data, "Index=", in_index);
     }
 
 
     return(
         <div className="block">
             <div className="block-title">{props.array.title}</div>
-            {props.array.issues.map(element=> <div className="block-content">{element.label}</div>)}
+            {props.array.issues.map(element=> <Link to="/detail" className="block-content">{element.label}</Link>)}
             {!visualInput && visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
             {!visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
             {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}

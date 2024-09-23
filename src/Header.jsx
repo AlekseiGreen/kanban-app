@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 // import "./Header.css"
 import User from "./img/user-avatar.svg";
 import Arrow from "./img/arrow-down.svg";
@@ -14,7 +14,7 @@ function Header(){
     return(
         <div className="grid-header">
             <div className="header">
-                <div className="header__logo">Awesome Kanban Board</div>
+                <Link to="/" className="header__logo">Awesome Kanban Board</Link>
                 <div className="header__user-avatar">
                     <img src={User} alt="user-avatar"/>
                 </div>
