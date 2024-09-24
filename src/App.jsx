@@ -14,6 +14,7 @@ function App(){
             
                 <Routes>
                     <Route path="/" element={<Main/>}/>
+                    {/* implement a route cycle */}
                     <Route path="/detail" element={<Detail/>}/>
                     <Route path="*" element={<h1>Page not found</h1>}/>
                 </Routes>
