@@ -1,7 +1,7 @@
 //
 
 
-function Detail(){
+function TaskDetail(){
 
     return(
         <div>
@@ -10,4 +10,4 @@ function Detail(){
     );
 }
 
-export default Detail;
+export default TaskDetail;
