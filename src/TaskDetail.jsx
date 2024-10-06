@@ -4,19 +4,24 @@ import { useParams } from 'react-router-dom';
 function TaskDetail(props){
     const { id } = useParams();
 
-    function findTask(in_arr, in_index, in_id){
+    function findTask(in_arr, in_id){
       let copyMain = Object.assign([], in_arr);
-      let copyMainIssues = Object.assign([], copyMain[in_index].issues);
-      const copyId = copyMainIssues.find((element)=>element.id===Number(in_id));
-      return(copyId);
+      for(let i=0; i < in_arr.length; i++){
+        let copyMainIssues = Object.assign([], copyMain[i].issues);
+        const copyId = copyMainIssues.find((element)=> element.id===Number(in_id));
+        // 
+        if(copyId!==undefined){
+          return([copyId.label, copyId.description,]);
+        }
+      }
     }
-    console.log("FindTask=",findTask(props.dataMock, 1, id));
+
+    let [div_1, div_2] = findTask(props.dataMock, id);
 
     return (
       <>
-        <h1>Label {}</h1>
-        <div>ID {id}</div>
-        <div>Descr {}</div>
+        <h1>{div_1}</h1>
+        <div>{div_2}</div>
       </>
       
     )
