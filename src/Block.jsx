@@ -49,11 +49,11 @@ function Block(props){
     return(
         <div className="block">
             <div className="block-title">{props.array.title}</div>
-            {props.array.issues.map((element)=> <Link to={element.id} className="block-content">{element.label}</Link>)}
+            {props.array.issues.map((element)=> <Link to={`/task/${element.id}`} className="block-content">{element.label}</Link>)}
             {!visualInput && visual && <div className="block-input"><input type="text" ref={fileInputRef} onChange={handleEnter}/></div>}
             {!visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
             {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}
-            {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card2</div></div>}
+            {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
             {visualInput && visual && <Select
                 send={onSendBlock}
                 options={props.partArray}
