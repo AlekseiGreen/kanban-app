@@ -8,7 +8,7 @@ function TaskDetail(props){
       let copyMain = Object.assign([], in_arr);
       for(let i=0; i < in_arr.length; i++){
         let copyMainIssues = Object.assign([], copyMain[i].issues);
-        const copyId = copyMainIssues.find((element)=> element.id===Number(in_id));
+        const copyId = copyMainIssues.find((element)=> element.id===in_id);
         // 
         if(copyId!==undefined){
           return([copyId.label, copyId.description,]);

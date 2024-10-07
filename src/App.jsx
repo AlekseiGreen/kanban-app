@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import {useState} from "react";
+import {useState, useId} from "react";
 import "./App.css";
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
@@ -15,12 +15,12 @@ function App(){
                 title: 'Backlog',
                 issues: [
                     {
-                        id: 1,
+                        id: '1',
                         label: '1_1111',
                 description: 'Fix all the bugs 1'
                     },
                     {
-                    id: 11,
+                    id: '11',
                     label: '11_1111',
             description: 'Fix all the bugs 11'
                 },
@@ -31,12 +31,12 @@ function App(){
             title: 'Ready',
             issues: [
                 {
-                    id: 2,
+                    id: '2',
                     label: '2_222',
                     description: 'Fix all the bugs 2'
                 },
                 {
-                    id: 22,
+                    id: '22',
                     label: '22_222',
                     description: 'Fix all the bugs 22'
                 },
@@ -47,7 +47,7 @@ function App(){
             title: 'In progress',
             issues: [
                 {
-                    id: 3,
+                    id: '3',
                     label: '3_3333',
                     description: 'Fix all the bugs 3'
                 }
@@ -58,7 +58,7 @@ function App(){
             title: 'Finished',
             issues: [
                 {
-                    id: 4,
+                    id: '4',
                     label: '4_4444',
                     description: 'Fix all the bugs 4'
                 }
@@ -69,15 +69,17 @@ function App(){
 
     const [main, setMain] = useState(dataMock);
     // Добавление задания в DataBase (Array)
-    function addDataBase(value, index){
+    function addDataBase(in_value, in_index, in_id){
         let copyMain = Object.assign([], main);
-        let copyMainIssues = Object.assign([], copyMain[index].issues);
-        copyMainIssues.push({id: '', label: value, description: ''});
-        copyMain[index].issues = copyMainIssues;
+        let copyMainIssues = Object.assign([], copyMain[in_index].issues);
+        copyMainIssues.push({id: in_id, label: in_value, description: ''});
+        copyMain[in_index].issues = copyMainIssues;
 
         setMain(copyMain);
         // console.log("Copy=", copyMain);
     }
+
+    
 
     // Удаление задания из DataBase (Array)
     function delDataBase(in_index, in_index_issues){
@@ -91,8 +93,9 @@ function App(){
     }
 
     // func onWriteBacklog
-    function onWriteBacklog(in_data){
-        addDataBase(in_data, 0);
+    function onWriteBacklog(in_data, in_id){
+        addDataBase(in_data, 0, in_id);
+        console.log('App -> ID=', in_id);
         console.log('Run from App=', main);
     }
 
