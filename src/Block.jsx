@@ -1,4 +1,4 @@
-import {useState, useRef, useId} from 'react';
+import {useState, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import "./Block.css";
 import Select from './components/Select';
@@ -33,26 +33,28 @@ function Block(props){
         }
     }
 
-    function onSendBlock(in_data, in_index){
-        props.onWrite(in_data, in_index);
+    function onSendBlock(in_index){
+        props.onWrite(in_index);
         setVisual(!visual);
     }
 
-    const newID = useId();
+    const uniqueID = `id-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 
 
     return(
         <div className="block">
             <div className="block-title">{props.array.title}</div>
             {props.array.issues.map((element)=> <Link to={`/task/${element.id}`} className="block-content">{element.label}</Link>)}
-            {!visualInput && visual && <div className="block-input"><input type="text" id={newID} ref={fileInputRef} /></div>}
-            {!visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
+            {!visualInput && visual && <div className="block-input"><input type="text" id={uniqueID} ref={fileInputRef} /></div>}
+            {!visualInput && !visual && <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
             {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}
-            {visualInput && !visual &&  <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
-            {visualInput && visual && <Select
-                send={onSendBlock}
-                options={props.partArray}
-            />}
+            {visualInput && !visual && <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
+            {visualInput && visual &&
+                <Select
+                    send={onSendBlock}
+                    options={props.partArray}
+                />
+            }
         </div>
     );
 }

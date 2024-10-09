@@ -69,58 +69,61 @@ function App(){
 
     const [main, setMain] = useState(dataMock);
     // Добавление задания в DataBase (Array)
-    function addDataBase(in_value, in_index, in_id){
+    function addDataBase(in_index, in_id, in_label, in_description=""){
         let copyMain = Object.assign([], main);
         let copyMainIssues = Object.assign([], copyMain[in_index].issues);
-        copyMainIssues.push({id: in_id, label: in_value, description: ''});
+        copyMainIssues.push({id: in_id, label: in_label, description: in_description});
         copyMain[in_index].issues = copyMainIssues;
 
+        console.log("Copy=>>", copyMain);
         setMain(copyMain);
-        // console.log("Copy=", copyMain);
+        
     }
 
-    
-
     // Удаление задания из DataBase (Array)
-    function delDataBase(in_index, in_index_issues){
+    function getCutElement(in_index, in_index_issues){
         let copyMain = Object.assign([], main);
         let copyMainIssues = Object.assign([], copyMain[in_index].issues);
+
+        let cutElement = copyMainIssues.slice(in_index_issues, in_index_issues + 1);
 
         copyMainIssues.splice(in_index_issues, 1);
 
         copyMain[in_index].issues = copyMainIssues;
         setMain(copyMain);
+
+        return(cutElement);
     }
 
     // func onWriteBacklog
     function onWriteBacklog(in_data, in_id){
-        addDataBase(in_data, 0, in_id);
-        console.log('App -> ID=', in_id);
-        console.log('Run from App=', main);
+        // 0 - Blacklog
+        addDataBase(0, in_id, in_data, "");
     }
 
     // func onWriteReady
-    function onWriteReady(in_data, in_index){
+    function onWriteReady(in_index){
+        // cutElement - возвращается объект в массиве
         // 0 - Blacklog
-        delDataBase(0, in_index);
+        let cutElement = getCutElement(0, in_index);
         // 1 - Ready
-        addDataBase(in_data, 1);
+        addDataBase(1, cutElement[0].id, cutElement[0].label, cutElement[0].description);
     }
 
     // onWriteReady onWriteInProgress
-    function onWriteInProgress(in_, in_index){
+    function onWriteInProgress(in_index){
         // 1 - Ready
-        delDataBase(1, in_index);
+        let cutElement = getCutElement(1, in_index);
         // 2- InProgress
-        addDataBase(in_, 2);
+        addDataBase(2, cutElement[0].id, cutElement[0].label, cutElement[0].description);
     }
 
     // onWriteInProgress onWriteFinished
-    function onWriteFinished(in_, in_index){
+    function onWriteFinished(in_index){
         // 2 - InProgress
-        delDataBase(2, in_index);
+        let cutElement = getCutElement(2, in_index);
         // 3 - Finished
-        addDataBase(in_, 3);
+        addDataBase(3, cutElement[0].id, cutElement[0].label, cutElement[0].description);
     }
 
     return(
