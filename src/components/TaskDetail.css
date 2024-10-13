@@ -1,0 +1,16 @@
+.taskdetail-link{
+    text-decoration: none;
+}
+
+.taskdetail-close{
+    border: solid red 3px;
+}
+
+.taskdetail-textarea{
+    resize: none;
+    width: 800px;
+}
+
+.taskdetail-button{
+
+}

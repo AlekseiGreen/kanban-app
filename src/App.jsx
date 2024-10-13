@@ -1,11 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import {useState, useId} from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {useState} from "react";
 import "./App.css";
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
-import TaskDetail from "./TaskDetail.jsx";
-import Task from "./components/Task.jsx";
+import TaskDetail from "./components/TaskDetail.jsx";
 
 
 function App(){
