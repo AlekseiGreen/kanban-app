@@ -94,6 +94,14 @@ function App(){
         return(cutElement);
     }
 
+    // Запись Description по индексам
+    function writeDescript(in_index, in_index_issues, in_description){
+        console.log("Index=", in_index);
+        console.log("index_issues=", in_index_issues);
+        console.log("description=", in_description);
+
+    }
+
     // func onWriteBacklog
     function onWriteBacklog(in_data, in_id){
         // 0 - Blacklog
@@ -131,7 +139,7 @@ function App(){
             
                 <Routes>
                     <Route path="/" element={<Main dataMock={main}/>}/>
-                    <Route path="/task/:id" element={<TaskDetail dataMock={main}/>} />
+                    <Route path="/task/:id" element={<TaskDetail dataMock={main} writeDescript={writeDescript}/>} />
                     <Route path="*" element={<h1>Page not found</h1>}/>
                 </Routes>
 
