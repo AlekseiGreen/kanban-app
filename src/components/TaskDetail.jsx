@@ -102,7 +102,6 @@ function TaskDetail(props){
         name="postContent"
         onChange={event => sendDescript(event, index, subIndex)}
       >{valueTD}</textarea>
-      <button className='taskdetail-button' onClick={()=>console.log("V=", 1)}>SAVE</button>
     </>
     
   )
