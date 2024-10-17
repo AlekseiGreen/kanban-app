@@ -96,10 +96,27 @@ function App(){
 
     // Запись Description по индексам
     function writeDescript(in_index, in_index_issues, in_description){
-        console.log("Index=", in_index);
-        console.log("index_issues=", in_index_issues);
-        console.log("description=", in_description);
+        // Копируем массив
+        let copyMain = Object.assign([], main);
+        console.log("copyMain=", copyMain);
 
+        // Копируем определенный раздел
+        let copyMainIssues = Object.assign([], copyMain[in_index].issues);
+        console.log("copyMainIssues=", copyMainIssues);
+        // Копируем определенный подраздел
+        let copyMainIssuesObj = Object.assign({}, copyMainIssues[in_index_issues]);
+        console.log("copyMainIssuesObj=", copyMainIssuesObj);
+        // Переписываем Description
+        copyMainIssuesObj.description = in_description;
+        console.log("description=", copyMainIssuesObj);
+        // Обновляем issues
+        copyMainIssues.splice(in_index_issues, 1, copyMainIssuesObj);
+        console.log("copyMainIssues=", copyMainIssues);
+        //
+        copyMain[in_index].issues = copyMainIssues;
+        console.log("copyMain=", copyMain);
+
+        setMain(copyMain);
     }
 
     // func onWriteBacklog
