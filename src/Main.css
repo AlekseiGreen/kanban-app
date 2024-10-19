@@ -1,0 +1,6 @@
+.main{
+    position: relative;
+    width: var(--g-width);
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,7 @@
+.footer{
+    position: relative;
+    width: var(--g-width);
+    height: 55px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -92,6 +92,11 @@
         text-align: left;
     }
 
+    .block-submit:hover{
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+    }
+
     .block-submit-text{
         width: 50px;
         position: relative;
