@@ -45,9 +45,9 @@ function Block(props){
         <div className="block">
             <div className="block-title">{props.array.title}</div>
             {props.array.issues.map((element)=> <Link to={`/task/${element.id}`} className="block-content">{element.label}</Link>)}
-            {!visualInput && visual && <div className="block-input"><input type="text" id={uniqueID} ref={fileInputRef} /></div>}
+            {!visualInput && visual && <input className="block-input" type="text" id={uniqueID} ref={fileInputRef} />}
             {!visualInput && !visual && <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
-            {!visualInput && visual && <div className="block-submit"><div className="block-submit-text" onClick={()=>onSendBacklog(fileInputRef)}>Submit</div></div>}
+            {!visualInput && visual && <button className="block-submit" onClick={()=>onSendBacklog(fileInputRef)}><div className="block-submit-text" >Submit</div></button>}
             {visualInput && !visual && <div className="block-add"><div className="block-add-text" onClick={onVision}>+ Add card</div></div>}
             {visualInput && visual &&
                 <Select

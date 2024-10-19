@@ -5,7 +5,7 @@
     .block{
         display: flex;
         flex-direction: column;
-        margin: 20px 3px 32px 3px;
+        margin: 0px 0px 32px 0px;
         width: 282px;
         border-radius: 10px;
         background: rgb(235, 236, 240);
@@ -46,6 +46,10 @@
         margin-top: 12px;
         margin-left: 12px;
         margin-bottom: 17px;
+
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
     }
 
     .block-add{
@@ -101,7 +105,8 @@
         width: 50px;
         position: relative;
         text-align: center;
-        top: 5px;
+        top: 0px;
+        left: 23px;
     }
     
 }
