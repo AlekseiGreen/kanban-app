@@ -14,7 +14,6 @@ function Block(props){
         setVisual(!visual);
     }
 
-
     if(props.array.title === 'Backlog'){
         visualInput = false;
     } else{

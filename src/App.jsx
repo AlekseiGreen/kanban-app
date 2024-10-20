@@ -8,22 +8,19 @@ import TaskDetail from "./components/TaskDetail.jsx";
 
 
 function App(){
-    localStorage.setItem('arr', [1,2,3]);
-    console.log("LocalStorage=",localStorage.getItem('arr'));
-
     // массив
     const dataMock2 = [
         {
-                title: 'Backlog',
-                issues: [
-                    {
-                        id: '1',
-                        label: '1_1111',
-                description: 'Fix all the bugs 1'
-                    },
-                    {
-                    id: '11',
-                    label: '11_1111',
+            title: 'Backlog',
+            issues: [
+                {
+                    id: '1',
+                    label: '1_1111',
+            description: 'Fix all the bugs 1'
+                },
+                {
+                id: '11',
+                label: '11_1111',
             description: 'Fix all the bugs 11'
                 },
             ],
@@ -91,7 +88,15 @@ function App(){
         },
     ];
 
+    // localStorage['arr'] = dataMock;
+    localStorage.setItem('arr', JSON.stringify(dataMock));
+    console.log("LocalStorage_0=", localStorage.getItem('arr'));
+    console.log("LocalStorage=", JSON.parse( localStorage.getItem('arr') ));
+
+
     const [main, setMain] = useState(dataMock);
+    // const [main, setMain] = useState( JSON.parse( localStorage.getItem('arr') ) );
+
     // Добавление задания в DataBase (Array)
     function addDataBase(in_index, in_id, in_label, in_description=""){
         let copyMain = Object.assign([], main);
