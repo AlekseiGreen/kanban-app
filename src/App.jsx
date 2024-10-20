@@ -8,8 +8,11 @@ import TaskDetail from "./components/TaskDetail.jsx";
 
 
 function App(){
+    localStorage.setItem('arr', [1,2,3]);
+    console.log("LocalStorage=",localStorage.getItem('arr'));
+
     // массив
-    const dataMock = [
+    const dataMock2 = [
         {
                 title: 'Backlog',
                 issues: [
@@ -64,7 +67,29 @@ function App(){
             ],
             onFunction: onWriteFinished,
         },
-    ]
+    ];
+    const dataMock = [
+        {
+            title: 'Backlog',
+            issues: [],
+            onFunction: onWriteBacklog,
+        },
+        {
+            title: 'Ready',
+            issues: [],
+            onFunction: onWriteReady,
+        },
+        {
+            title: 'In progress',
+            issues: [],
+            onFunction: onWriteInProgress,
+        },
+        {
+            title: 'Finished',
+            issues: [],
+            onFunction: onWriteFinished,
+        },
+    ];
 
     const [main, setMain] = useState(dataMock);
     // Добавление задания в DataBase (Array)

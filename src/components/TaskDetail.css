@@ -49,10 +49,6 @@
         text-decoration: none;
     }
 
-    .taskdetail-close{
-        /*  */
-    }
-
     .taskdetail-textarea{
         position: absolute;
         top: 100px;
@@ -72,5 +68,71 @@
         border-radius: 5px;
         border: 2px solid black;
     }
+}
 
+/* Mobile max 1280*/
+@media only screen and (max-width: 1280px){
+
+    .taskdetail{
+        height: 100vh;
+        padding-top: 20px;
+
+        position: relative;
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .taskdetail-box{
+        position: relative;
+
+        height: 700px;
+        width: 282px;
+        border-radius: 5px;
+        background-color: white;
+    }
+
+    .taskdetail-label{
+        position: absolute;
+        top: 30px;
+        left: 30px;
+
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .taskdetail-link{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+
+        text-decoration: none;
+    }
+
+    .taskdetail-link:hover{
+        background-color: rgb(230,230,230);
+        border-radius: 2px;
+        text-decoration: none;
+    }
+
+    .taskdetail-textarea{
+        position: absolute;
+        top: 100px;
+        left: 6px;
+
+        resize: none;
+        height: 550px;
+        width: 270px;
+
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .taskdetail-textarea:hover{
+        cursor: pointer;
+        border-radius: 5px;
+        border: 2px solid black;
+    }
 }
