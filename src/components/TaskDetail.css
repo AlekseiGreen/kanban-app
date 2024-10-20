@@ -1,12 +1,76 @@
-.taskdetail-link{
-    text-decoration: none;
-}
+/* PC 1280*/
+@media only screen and (min-width: 1280px){
 
-.taskdetail-close{
-    border: solid red 3px;
-}
+    .taskdetail{
+        height: 100vh;
+        padding-top: 20px;
 
-.taskdetail-textarea{
-    resize: none;
-    width: 800px;
+        position: relative;
+        width: var(--g-width);
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        
+    }
+
+    .taskdetail-box{
+        /* padding: 20px; */
+        position: relative;
+
+        height: 700px;
+        width: 1181px;
+        border-radius: 5px;
+        background-color: white;
+    }
+
+    .taskdetail-label{
+        position: absolute;
+        top: 30px;
+        left: 30px;
+
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .taskdetail-link{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+
+        text-decoration: none;
+    }
+
+    .taskdetail-link:hover{
+        background-color: rgb(230,230,230);
+        border-radius: 2px;
+        text-decoration: none;
+    }
+
+    .taskdetail-close{
+        /*  */
+    }
+
+    .taskdetail-textarea{
+        position: absolute;
+        top: 100px;
+        left: 30px;
+
+        resize: none;
+        height: 550px;
+        width: 1115px;
+
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .taskdetail-textarea:hover{
+        cursor: pointer;
+        border-radius: 5px;
+        border: 2px solid black;
+    }
+
 }

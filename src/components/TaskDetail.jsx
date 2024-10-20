@@ -91,18 +91,22 @@ function TaskDetail(props){
   }
 
   return (
-    <>
-      <h1>{label}</h1>
-      <Link to={`/`} className="taskdetail-link">
-        <div className="taskdetail-close">X</div>
-      </Link>
-      
-      <textarea
-        className='taskdetail-textarea'
-        name="postContent"
-        onChange={event => sendDescript(event, index, subIndex)}
-      >{valueTD}</textarea>
-    </>
+    <div class="grid-taskdetail">
+      <div class="taskdetail">
+        <div class="taskdetail-box">
+          <h1 class="taskdetail-label">{label}</h1>
+          <Link to={`/`} className="taskdetail-link">
+            <div className="taskdetail-close">X</div>
+          </Link>
+          
+          <textarea
+            className='taskdetail-textarea'
+            name="postContent"
+            onChange={event => sendDescript(event, index, subIndex)}
+          >{valueTD}</textarea>
+        </div>
+      </div>
+    </div>
     
   )
 }

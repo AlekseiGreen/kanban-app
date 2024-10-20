@@ -1,108 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-/* PC work=1280px test=600px*/
-@media only screen and (min-width: 600px){
-    .block{
-        display: flex;
-        flex-direction: column;
-        margin: 0px 0px 32px 0px;
-        width: 282px;
-        border-radius: 10px;
-        background: rgb(235, 236, 240);
 
-        color: rgb(0, 0, 0);
-        font-family: Roboto;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 21px;
-        letter-spacing: 0%;
-        text-align: left;
-    }
+.block{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 32px 0px;
+    width: 282px;
+    border-radius: 10px;
+    background: rgb(235, 236, 240);
 
-    .block-title{
-        width: 232px;
-        height: 17px;
-        margin-top: 12px;
-        margin-left: 12px;
-    }
-
-    .block-content{
-        width: 258px;
-        margin-top: 15px;
-        margin-left: 12px;
-        border-radius: 5px;
-        background: rgb(255, 255, 255);
-        text-decoration: none;
-        overflow: hidden;
-    }
-
-    .block-input{
-        width: 258px;
-        height: 35px;
-        margin-top: 12px;
-        margin-left: 12px;
-        margin-bottom: 17px;
-
-        font-family: Roboto;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .block-add{
-        width: 102px;
-        height: 29px;
-        margin-left: 12px;
-        margin-top: 17px;
-        margin-bottom: 8px;
-        cursor: pointer;
-
-        color: rgb(94, 108, 132);
-        font-family: Roboto;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 21px;
-        letter-spacing: 0%;
-        text-align: left;
-    }
-    .block-add:hover{
-        border-radius: 5px;
-        background-color: rgb(255, 255, 255);
-    }
-
-    .block-add-text{
-        position: relative;
-        text-align: center;
-        top: 5px;
-    }
-
-    .block-submit{
-        width: 102px;
-        height: 29px;
-        margin-left: 12px;
-        margin-top: auto;
-        margin-bottom: 8px;
-        cursor: pointer;
-
-        color: rgb(94, 108, 132);
-        font-family: Roboto;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 21px;
-        letter-spacing: 0%;
-        text-align: left;
-    }
-
-    .block-submit:hover{
-        border-radius: 5px;
-        background-color: rgb(255, 255, 255);
-    }
-
-    .block-submit-text{
-        width: 50px;
-        position: relative;
-        text-align: center;
-        top: 0px;
-        left: 23px;
-    }
-    
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
 }
+
+.block-title{
+    width: 232px;
+    height: 17px;
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+.block-content{
+    width: 258px;
+    margin-top: 15px;
+    margin-left: 12px;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.block-input{
+    width: 258px;
+    height: 35px;
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-bottom: 17px;
+
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.block-add{
+    width: 102px;
+    height: 29px;
+    margin-left: 12px;
+    margin-top: 17px;
+    margin-bottom: 8px;
+    cursor: pointer;
+
+    color: rgb(94, 108, 132);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+.block-add:hover{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.block-add-text{
+    position: relative;
+    text-align: center;
+    top: 5px;
+}
+
+.block-submit{
+    width: 102px;
+    height: 29px;
+    margin-left: 12px;
+    margin-top: auto;
+    margin-bottom: 8px;
+    cursor: pointer;
+
+    color: rgb(94, 108, 132);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.block-submit:hover{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.block-submit-text{
+    width: 50px;
+    position: relative;
+    text-align: center;
+    top: 0px;
+    left: 23px;
+}
+

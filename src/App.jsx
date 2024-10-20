@@ -147,11 +147,10 @@ function App(){
     return(
         <Router>
             <Header/>
-            
                 <Routes>
                     <Route path="/" element={<Main dataMock={main}/>}/>
                     <Route path="/task/:id" element={<TaskDetail dataMock={main} writeDescript={writeDescript}/>} />
-                    <Route path="*" element={<h1>Page not found</h1>}/>
+                    <Route path="*" element={<div className="grid-pagenotefound"><h1>Page not found</h1></div>}/>
                 </Routes>
 
             <Footer dataMock={main}/>

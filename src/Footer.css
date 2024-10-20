@@ -1,16 +1,36 @@
-.footer{
-    /* position: relative; */
-    width: var(--g-width);
-    height: 55px;
-    margin-left: auto;
-    margin-right: auto;
+/* PC 1280*/
+@media only screen and (min-width: 1280px){
+    .footer{
+        /* position: relative; */
+        width: var(--g-width);
+        height: 55px;
+        margin-left: auto;
+        margin-right: auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    grid-gap: 20px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: 400;
-    color: white;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        grid-gap: 20px;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        color: white;
+    }
+}
+
+/* Mobile 1280*/
+@media only screen and (max-width: 1280px){
+    .footer{
+        /* position: relative; */
+        height: 55px;
+
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        grid-gap: 20px;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        color: white;
+    }
 }
