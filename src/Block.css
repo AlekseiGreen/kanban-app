@@ -30,14 +30,10 @@
         width: 258px;
         margin-top: 15px;
         margin-left: 12px;
-        /* padding-top: 7px;
-        padding-bottom: 7px;
-        padding-left: 8px;
-        padding-right: 9px; */
-
         border-radius: 5px;
         background: rgb(255, 255, 255);
         text-decoration: none;
+        overflow: hidden;
     }
 
     .block-input{
