@@ -9,93 +9,63 @@ import TaskDetail from "./components/TaskDetail.jsx";
 
 function App(){
     // массив
-    const dataMock2 = [
-        {
-            title: 'Backlog',
-            issues: [
-                {
-                    id: '1',
-                    label: '1_1111',
-            description: 'Fix all the bugs 1'
-                },
-                {
-                id: '11',
-                label: '11_1111',
-            description: 'Fix all the bugs 11'
-                },
-            ],
-            onFunction: onWriteBacklog,
-        },
-        {
-            title: 'Ready',
-            issues: [
-                {
-                    id: '2',
-                    label: '2_222',
-                    description: 'Fix all the bugs 2'
-                },
-                {
-                    id: '22',
-                    label: '22_222',
-                    description: 'Fix all the bugs 22'
-                },
-            ],
-            onFunction: onWriteReady,
-        },
-        {
-            title: 'In progress',
-            issues: [
-                {
-                    id: '3',
-                    label: '3_3333',
-                    description: 'Fix all the bugs 3'
-                }
-            ],
-            onFunction: onWriteInProgress,
-        },
-        {
-            title: 'Finished',
-            issues: [
-                {
-                    id: '4',
-                    label: '4_4444',
-                    description: 'Fix all the bugs 4'
-                }
-            ],
-            onFunction: onWriteFinished,
-        },
-    ];
-    const dataMock = [
+    const dataMock3 = [
         {
             title: 'Backlog',
             issues: [],
-            onFunction: onWriteBacklog,
+            onFunction: 'onWriteBacklog',
         },
         {
             title: 'Ready',
             issues: [],
-            onFunction: onWriteReady,
+            onFunction: 'onWriteReady',
         },
         {
             title: 'In progress',
             issues: [],
-            onFunction: onWriteInProgress,
+            onFunction: 'onWriteInProgress',
         },
         {
             title: 'Finished',
             issues: [],
-            onFunction: onWriteFinished,
+            onFunction: 'onWriteFinished',
         },
     ];
 
-    // localStorage['arr'] = dataMock;
-    localStorage.setItem('arr', JSON.stringify(dataMock));
-    console.log("LocalStorage_0=", localStorage.getItem('arr'));
-    console.log("LocalStorage=", JSON.parse( localStorage.getItem('arr') ));
+    // localStorage.clear();
 
+    if(localStorage.length === 0){
+        localStorage.setItem('arr', JSON.stringify(dataMock3));
+    console.log("Вход в условие=>");
+
+    }
+
+    function convertLS(){
+        let arr = JSON.parse( localStorage.getItem('arr') );
+        for(let i=0; i < dataMock3.length; i++){
+            arr[i].onFunction = eval(arr[i].onFunction);
+        }
+        return(arr);
+    }
+    let dataMock;
+    dataMock = convertLS();
+
+    console.log("LocalStorage=", dataMock);
+
+    function convertFuncToString(in_copyMain){
+        for(let i=0; i < in_copyMain.length; i++){
+            in_copyMain[i].onFunction = String(in_copyMain[i].onFunction);
+            console.log("CONVERT_0=", in_copyMain);
+            in_copyMain[i].onFunction = in_copyMain[i].onFunction.split('(').shift();
+            console.log("CONVERT_1=", in_copyMain);
+            in_copyMain[i].onFunction = in_copyMain[i].onFunction.slice(9);
+            console.log("CONVERT_2=", in_copyMain);
+        }
+        localStorage.setItem('arr', JSON.stringify(in_copyMain));
+        console.log("CONVERT_=", JSON.parse( localStorage.getItem('arr') ));
+    }
 
     const [main, setMain] = useState(dataMock);
-    // const [main, setMain] = useState( JSON.parse( localStorage.getItem('arr') ) );
 
     // Добавление задания в DataBase (Array)
     function addDataBase(in_index, in_id, in_label, in_description=""){
@@ -104,8 +74,15 @@ function App(){
         copyMainIssues.push({id: in_id, label: in_label, description: in_description});
         copyMain[in_index].issues = copyMainIssues;
 
-        console.log("Copy=>>", copyMain);
+        convertFuncToString(copyMain)
+        
+        for(let i=0; i < copyMain.length; i++){
+            copyMain[i].onFunction = eval(copyMain[i].onFunction);
+        }
+        console.log("copyMAIN_=", copyMain);
+
         setMain(copyMain);
+        console.log("MAIN_=", main);
         
     }
 
