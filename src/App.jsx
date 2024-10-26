@@ -117,6 +117,12 @@ function App(){
         //
         copyMain[in_index].issues = copyMainIssues;
 
+        convertFuncToString(copyMain)
+        
+        for(let i=0; i < copyMain.length; i++){
+            copyMain[i].onFunction = eval(copyMain[i].onFunction);
+        }
+
         setMain(copyMain);
     }
 
